@@ -1,10 +1,17 @@
 //let app = document.getElementById('app');
 //let boton = document.querySelector('#boton');
 
-let url = 'https://icanhazdadjoke.com/';
+const url='https://icanhazdadjoke.com//slack';
 
-  fetch(url)
-    .then(response => response.json())
-    .then(datos => console.log(datos))
-    .catch(error => console.log(error))
+function nuevoChiste(){
 
+const peticion = fetch(url);
+
+    peticion
+
+    .then(datos => datos.json())
+    .then(data => console.log(data.attachments[0].text))
+    .catch(()=> console.log("error")) 
+
+}    
+nuevoChiste();
