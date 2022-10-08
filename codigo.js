@@ -1,17 +1,26 @@
-//let app = document.getElementById('app');
-//let boton = document.querySelector('#boton');
+let app = document.getElementById('app');
 
 const url='https://icanhazdadjoke.com//slack';
 
 function nuevoChiste(){
 
-const peticion = fetch(url);
+const peticion=fetch(url);
 
     peticion
 
     .then(datos => datos.json())
-    .then(data => console.log(data.attachments[0].text))
-    .catch(()=> console.log("error")) 
 
+    .then(data =>  {
+      app.innerHTML = data.attachments[0].text + "🤣";
+    })
+    .catch(()=> alert("error")) 
+
+  
 }    
-nuevoChiste();
+
+function iniciar(){
+  document.getElementById('boton').onclick = nuevoChiste;
+}
+
+
+window.onload = iniciar;
