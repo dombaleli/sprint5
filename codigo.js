@@ -1,74 +1,56 @@
 
+window.onload = el_tiempo;
+
 let app = document.getElementById('app');
 let reportJokes = [];
-const svg = ["img/blob1.svg", "img/blob2.svg","imgblob3.svg","img/blob4.svg","img/blob5.svg", "img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg","/img/blob1.svg", "/img/blob2.svg","/img/blob3.svg","/img/blob4.svg","/img/blob5.svg"];
+let array_svg = ["img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg","img/blob1.svg", "img/blob2.svg","img/blob3.svg","img/blob4.svg","img/blob5.svg","img/blob6.svg"];
 let imgBlob = document.getElementById('img');
+let url_img = "array_svg[reportJokes.length]";
+let joke;
+
+let fecha = () => {
+  const d = new Date();
+  let day = d.toISOString(); 
+  return day;
+} 
 
 let nuevoChiste = () =>{
     const url='https://icanhazdadjoke.com//slack';
     const peticion=fetch(url)
       peticion.then(datos => datos.json())
               .then(data =>  {
-                getJoke(data.attachments[0].text);
+                imgBlob.style.background = `${url_img}`;
                 app.innerHTML = data.attachments[0].text;
-                document.getElementById('contain_emoji').style.display = 'block';
-                document.getElementById('boton').style.display = 'none';
+                joke = data.attachments[0].text;
               })
-              .catch(() => alert("error"))
-         
-}
-
-let getJoke = (data) => data;
-
+              .catch(() => alert("error"))         
+}   
 let segundoChiste = () =>{
-    const url='https://api.chucknorris.io/jokes/random';
-    const peticion2=fetch(url)
-      peticion2.then(datos => datos.json())
-              .then(dato =>  {
-                obtenerChiste(dato.value);
-                app.innerHTML = dato.value;
-                document.getElementById('contain_emoji').style.display = 'block';
-                document.getElementById('boton2').style.display = 'none';
-              })
-              .catch(() => alert("error"))                     
-}
+  const url='https://api.chucknorris.io/jokes/random';
+  const peticion2=fetch(url)
+    peticion2.then(dades => dades.json())
+            .then(dato =>  {
+              imgBlob.style.background = `${url_img}`;
+              app.innerHTML = dato.value;
+              joke = dato.value;
+            })
+            .catch(() => alert("error"))                     
+}      
 
-let obtenerChiste = (dato) => dato;
+function score(num){
+  let puntuacion = num;
 
-  let fecha = () => {
-    const d = new Date();
-    let day = d.toISOString(); 
-    return day;
-} 
-
-let score = (num) => {
-
-  let puntos;
-
-  if(num === 1){
-    puntos = 1;
-    alert('Su opinión es importante, gracias!');
-    document.getElementById('boton2').style.display = 'block';
-    document.getElementById('contain_emoji').style.display = 'none'
-  }else if(num === 2){
-    puntos = 2;
-    alert('Su opinión es importante, gracias!');
-    document.getElementById('boton').style.display = 'block';
-    document.getElementById('contain_emoji').style.display = 'none';
-  }else if(num === 3){
-    puntos = 3;
-    alert('Su opinión es importante, gracias!');
-    document.getElementById('boton').style.display = 'block';
-    document.getElementById('contain_emoji').style.display = 'none';
+  if(reportJokes.length % 2 == 0){
+    document.getElementById('boton').style.display='block';
+    document.getElementById('boton2').style.display='none';
+  }else{
+    document.getElementById('boton').style.display='none';
+    document.getElementById('boton2').style.display='block';
   }
-
-  let joke = getJoke();
-  let joke2 = obtenerChiste();
-  let data = fecha();
-
-  let opinio = new Opinions(joke || joke2, puntos, data);
-  reportJokes.push(opinio);
+  let dades = new Opinions(joke, puntuacion, fecha());
+  reportJokes.push(dades);
 }
+
 console.log(reportJokes);
 
 
@@ -84,4 +66,5 @@ function el_tiempo(){
             .catch(() => alert("error"))          
 }
 
-window.onload = el_tiempo;
+
+
