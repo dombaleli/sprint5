@@ -21,7 +21,7 @@
             }
         }
         #img{
-          background : url('img/blob1.svg') no-repeat center;
+          background : url('img/blob2.svg') no-repeat center;
         }
     </style>
 </head>
@@ -32,10 +32,10 @@
       <h1 class="display-5 fw-bold text-dark py-3">¿Quieres reirte?</h1>
         <div class="col-lg-6 mx-auto">
           <p class="aparece text-dark fs-5 mb-4" id="app">Click para empezar a reir...</p>
-          <div class="py-3" id='contain_emoji'>
-            <button class="btn btn-light" onclick="score(3)"><i class="fa-regular fa-face-grin-tears text-success fs-3"></i></button>
-            <button class="mx-2 btn btn-light" onclick="score(2)"><i class="fa-regular fa-face-meh text-warning fs-3"></i></button>
-            <button class="btn btn-light" onclick="score(1)"><i class="fa-regular fa-face-frown text-danger fs-3"></i></button>
+          <div class="py-3" id='contain_emojis' style="display: none">
+            <button class="btn btn-light" id='3p' onclick="score(3)"><i class="fa-regular fa-face-grin-tears text-success fs-3"></i></button>
+            <button class="mx-2 btn btn-light" id='2p' onclick="score(2)"><i class="fa-regular fa-face-meh text-warning fs-3"></i></button>
+            <button class="btn btn-light" id='1p' onclick="score(1)"><i class="fa-regular fa-face-frown text-danger fs-3"></i></button>
           </div>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center py-3">
             <button type="button" class="btn btn-outline-dark btn.lg px-4 me-sm-3 fw-bold" id="boton" onclick="nuevoChiste()">Siguiente chiste</button>
