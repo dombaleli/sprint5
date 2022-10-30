@@ -6,10 +6,10 @@ window.onload = el_tiempo;
 let elTiempo = document.getElementById('tiempo');
 let app = document.getElementById('app');
 let emojis = document.getElementById('contain_emojis');
+let btnChiste = document.getElementById('boton1');
+let pregunta = document.getElementById('pregunta');
 let reportJokes = [];
 let puntos, joke;
-
-
 
 let fecha = () => {
   const d = new Date();
@@ -19,6 +19,8 @@ let fecha = () => {
 
 let score = (num) =>{
   puntos = num;
+  btnChiste.style.display = 'block';
+  pregunta.style.display ='none';
   llenarArray();
 }
 
@@ -29,18 +31,32 @@ let nuevoChiste = () =>{
       peticion.then(datos => datos.json())
               .then(data =>  {
                 emojis.style.display = 'block';
+                btnChiste.style.display = 'none';
+                pregunta.style.display ='block';
                 app.innerHTML = data.attachments[0].text;
-                joke = data.attachments[0].text;               
-                //imgBlob.style.background = `${url_img}`;
-                
+                joke = data.attachments[0].text;  
+                //imgBlob.style.background = `${url_img}`;               
               })
-              .catch(() => alert("error"))  
-                              
+              .catch(() => alert("error"))                            
 }  
+/*let segundoChiste = () =>{
+
+  const url='https://api.chucknorris.io/jokes/random';
+  const peticion2=fetch(url)
+    peticion2.then(dades => dades.json())
+            .then(dato =>  {
+              app.innerHTML = dato.value;
+              joke1 = dato.value;
+              //imgBlob.style.background = `${url_img}`;
+            })
+            .catch(() => alert("error"))                     
+}*/      
+
 let llenarArray = () => {
-  let opinion = new Opinions(joke, puntos, fecha());
-  reportJokes.push(opinion);
-  
+
+    let opinion = new Opinions(joke, puntos, fecha());
+    reportJokes.push(opinion);
+ 
 } 
 console.log(reportJokes);                           
 
@@ -55,32 +71,6 @@ function el_tiempo(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//console.log(reportJokes);
-
-/*let segundoChiste = () =>{
-  const url='https://api.chucknorris.io/jokes/random';
-  const peticion2=fetch(url)
-    peticion2.then(dades => dades.json())
-            .then(dato =>  {
-              imgBlob.style.background = `${url_img}`;
-              app.innerHTML = dato.value;
-              joke = dato.value;
-            })
-            .catch(() => alert("error"))                     
-}*/      
 
 
 

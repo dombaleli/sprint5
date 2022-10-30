@@ -35,11 +35,12 @@
           <div class="py-3" id='contain_emojis' style="display: none">
             <button class="btn btn-light" id='3p' onclick="score(3)"><i class="fa-regular fa-face-grin-tears text-success fs-3"></i></button>
             <button class="mx-2 btn btn-light" id='2p' onclick="score(2)"><i class="fa-regular fa-face-meh text-warning fs-3"></i></button>
-            <button class="btn btn-light" id='1p' onclick="score(1)"><i class="fa-regular fa-face-frown text-danger fs-3"></i></button>
+            <button class="btn btn-light" id='1p' onclick="score(1)"><i class="fa-regular fa-face-frown text-danger fs-3"></i></button><br>
+            <p class='mt-3' id="pregunta" style="display: none">Did you like the joke?</p>
           </div>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center py-3">
-            <button type="button" class="btn btn-outline-dark btn.lg px-4 me-sm-3 fw-bold" id="boton" onclick="nuevoChiste()">Siguiente chiste</button>
-            <button type="button" class="btn btn-outline-dark btn-lg  px-4 me-sm-3 fw-bold" id="boton2"  onclick="segundoChiste()" style="display: none;">Siguiente chiste</button>
+            <button type="button" class="btn btn-outline-dark btn.lg px-4 me-sm-3 fw-bold" id="boton1" onclick="nuevoChiste()">Siguiente chiste</button>
+            <button type="button" class="btn btn-outline-dark btn-lg  px-4 me-sm-3 fw-bold" id="boton2" onclick="segundoChiste()" style="display: none">Siguiente chiste</button>
           </div>
         </div>
     </div>
